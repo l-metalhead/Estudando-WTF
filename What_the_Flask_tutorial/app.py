@@ -1,14 +1,10 @@
-from flask import Flask, jsonify
+from flask import Flask
 
 
 app = Flask('What_the_Flask_Tutorial')
 
-def json_api():
-    pessoas = [{"nome": "Bruno Rocha"},
-               {"nome": "Arjen Lucassen"},
-               {"nome": "Anneke van Giersbergen"},
-               {"nome": "Steven Wilson"}]
+app.config['SECRET_KEY'] = "schablau"
+app.config['DEBUG'] = True
 
-    return jsonify(pessoas=pessoas, total=len(pessoas))
-
-app.run()
+from flask.ext.magic import MakeMagic
+MakeMagic(app)
