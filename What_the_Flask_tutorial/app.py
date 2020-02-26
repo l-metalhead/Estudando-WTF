@@ -1,10 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify
 
 
 app = Flask('What_the_Flask_Tutorial')
 
-@app.route('/html_page/<nome>')  # template path
-def html_page(nome):
-    return render_template('html_page.html', nome=nome)
+def json_api():
+    pessoas = [{"nome": "Bruno Rocha"},
+               {"nome": "Arjen Lucassen"},
+               {"nome": "Anneke van Giersbergen"},
+               {"nome": "Steven Wilson"}]
+
+    return jsonify(pessoas=pessoas, total=len(pessoas))
 
 app.run()
