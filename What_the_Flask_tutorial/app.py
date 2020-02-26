@@ -1,12 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask('What_the_Flask_Tutorial')
 
-@app.route('/<name>')
-def index(name):
-    if name.lower() == 'lucas':
-        return f'Olá {name}', 200
-    return 'Not Found', 404
+@app.route('/html_page/<nome>')  # template path
+def html_page(nome):
+    return render_template('html_page.html', nome=nome)
 
 app.run()
